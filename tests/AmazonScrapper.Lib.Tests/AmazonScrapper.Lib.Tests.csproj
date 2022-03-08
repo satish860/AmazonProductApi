@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AmazonScrapper.Lib\AmazonScrapper.Lib.csproj" />
+  </ItemGroup>
+
 </Project>
