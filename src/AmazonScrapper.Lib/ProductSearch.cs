@@ -14,5 +14,10 @@ namespace AmazonScrapper.Lib
             HtmlWeb document = new HtmlWeb();
             return document.Load(url);
         }
+
+        public string FormUrl(string searchTerm)
+        {
+            return $"https://www.amazon.in/s?k={Uri.EscapeDataString(searchTerm)}&i=aps";
+        }
     }
 }
