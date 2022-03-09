@@ -8,8 +8,10 @@ namespace AmazonScrapper.Lib
 {
     public class Product
     {
-        public string ProductName { get; set; }
+        public string ProductName { get; set; } = string.Empty;
 
-        public string Asin { get; set; }
+        public string Asin { get; set; } = String.Empty;
+
+        public Decimal Price { get; set; }
     }
 }

@@ -28,8 +28,8 @@ namespace AmazonScrapper.Lib
             return htmlNodes.Select(node => new Product
             {
                 ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml,
-                Asin = node.Attributes["data-asin"].Value
-                
+                Asin = node.Attributes["data-asin"].Value,
+                Price = Convert.ToDecimal(node.QuerySelector(".a-price-whole").InnerHtml)
             });
         }
     }
