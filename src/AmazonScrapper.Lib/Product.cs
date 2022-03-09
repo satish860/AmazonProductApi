@@ -9,5 +9,7 @@ namespace AmazonScrapper.Lib
     public class Product
     {
         public string ProductName { get; set; }
+
+        public string Asin { get; set; }
     }
 }

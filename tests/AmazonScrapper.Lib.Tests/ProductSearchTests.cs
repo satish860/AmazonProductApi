@@ -31,5 +31,13 @@ namespace AmazonScrapper.Lib.Tests
             var products = productSearch.GetProducts("Xbox one");
             Assert.True(products.Any());
         }
+
+        [Fact]
+        public void Should_be_Able_to_ASIN()
+        {
+            ProductSearch productSearch = new ProductSearch();
+            var products = productSearch.GetProducts("Xbox one");
+            Assert.NotEmpty(products.First().Asin);
+        }
     }
 }

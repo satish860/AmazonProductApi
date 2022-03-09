@@ -27,7 +27,9 @@ namespace AmazonScrapper.Lib
             IList<HtmlNode> htmlNodes = htmlDocument.QuerySelectorAll("div[data-component-type=s-search-result]");
             return htmlNodes.Select(node => new Product
             {
-                ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml
+                ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml,
+                Asin = node.Attributes["data-asin"].Value
+                
             });
         }
     }
