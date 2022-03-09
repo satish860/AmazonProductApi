@@ -24,10 +24,10 @@ namespace AmazonScrapper.Lib
         public IEnumerable<Product> GetProducts(string searchTerm)
         {
             HtmlDocument htmlDocument = GetAmazonProduct(FormUrl(searchTerm));
-            IList<HtmlNode> htmlNodes = htmlDocument.QuerySelectorAll("a > span.a-text-normal");
+            IList<HtmlNode> htmlNodes = htmlDocument.QuerySelectorAll("div[data-component-type=s-search-result]");
             return htmlNodes.Select(node => new Product
             {
-                ProductName = node.InnerHtml
+                ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml
             });
         }
     }
