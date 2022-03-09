@@ -13,8 +13,8 @@ namespace AmazonScrapper.Lib.Tests
         public void GetProductBySearchForDefaultCountry()
         { 
             ProductSearch searchProduct = new ProductSearch();
-            string amazonproducts = searchProduct.GetAmazonProduct("https://www.amazon.in/s?k=Xbox%20one&i=aps");
-
+            var amazonproducts = searchProduct.GetAmazonProduct("https://www.amazon.in/s?k=Xbox%20one&i=aps");
+            Assert.NotNull(amazonproducts);
         }
     }
 }
