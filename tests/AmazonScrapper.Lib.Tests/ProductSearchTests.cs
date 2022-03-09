@@ -23,5 +23,13 @@ namespace AmazonScrapper.Lib.Tests
             var searchProduct = new ProductSearch();
             Assert.Equal("https://www.amazon.in/s?k=Xbox%20one&i=aps", searchProduct.FormUrl("Xbox one"));
         }
+
+        [Fact]
+        public void Should_be_Able_to_Get_Product_From_Html()
+        {
+            ProductSearch productSearch = new ProductSearch();
+            var products = productSearch.GetProducts("Xbox one");
+            Assert.True(products.Any());
+        }
     }
 }
