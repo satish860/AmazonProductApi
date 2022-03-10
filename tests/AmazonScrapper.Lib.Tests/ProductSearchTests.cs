@@ -9,6 +9,13 @@ namespace AmazonScrapper.Lib.Tests
 {
     public class ProductSearchTests
     {
+        private readonly IEnumerable<Product> _products;    
+        public ProductSearchTests()
+        {
+            ProductSearch productSearch = new ProductSearch();
+            _products = productSearch.GetProducts("Xbox one");
+        }
+
         [Fact]
         public void GetProductBySearchForDefaultCountry()
         { 
@@ -27,25 +34,26 @@ namespace AmazonScrapper.Lib.Tests
         [Fact]
         public void Should_be_Able_to_Get_Product_From_Html()
         {
-            ProductSearch productSearch = new ProductSearch();
-            var products = productSearch.GetProducts("Xbox one");
-            Assert.True(products.Any());
+            Assert.True(_products.Any());
         }
 
         [Fact]
         public void Should_be_Able_to_ASIN()
         {
-            ProductSearch productSearch = new ProductSearch();
-            var products = productSearch.GetProducts("Xbox one");
-            Assert.NotEmpty(products.First().Asin);
+            Assert.NotEmpty(_products.First().Asin);
         }
 
         [Fact]
         public void Should_be_Able_to_Get_Products()
         {
-            ProductSearch productSearch = new ProductSearch();
-            var products = productSearch.GetProducts("Xbox one");
-            Assert.NotEqual(0,products.First().Price);
+            Assert.NotEqual(0,_products.First().Price);
+        }
+
+        [Fact]
+        public void Should_be_Able_to_Get_Url()
+        {
+            var asin = _products.First().Asin;
+            Assert.Equal( new Uri($"https://www.amazon.in/dp/{asin}"), _products.First().ProductUrl);
         }
     }
 }

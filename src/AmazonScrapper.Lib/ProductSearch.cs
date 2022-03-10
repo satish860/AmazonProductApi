@@ -29,7 +29,7 @@ namespace AmazonScrapper.Lib
             {
                 ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml,
                 Asin = node.Attributes["data-asin"].Value,
-                Price = Convert.ToDecimal(node.QuerySelector(".a-price-whole").InnerHtml)
+                Price = Convert.ToDecimal(node.QuerySelector(".a-price-whole").InnerHtml),
             });
         }
     }

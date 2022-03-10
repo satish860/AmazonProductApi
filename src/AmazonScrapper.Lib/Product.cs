@@ -13,5 +13,13 @@ namespace AmazonScrapper.Lib
         public string Asin { get; set; } = String.Empty;
 
         public Decimal Price { get; set; }
+
+        public Uri? ProductUrl
+        {
+            get
+            {
+                return new Uri($"https://www.amazon.in/dp/{Asin}");
+            }
+        }
     }
 }
