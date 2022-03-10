@@ -21,5 +21,7 @@ namespace AmazonScrapper.Lib
                 return new Uri($"https://www.amazon.in/dp/{Asin}");
             }
         }
+
+        public Uri? ImageUri { get; set; }
     }
 }

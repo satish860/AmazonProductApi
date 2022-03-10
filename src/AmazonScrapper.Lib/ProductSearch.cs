@@ -25,12 +25,18 @@ namespace AmazonScrapper.Lib
         {
             HtmlDocument htmlDocument = GetAmazonProduct(FormUrl(searchTerm));
             IList<HtmlNode> htmlNodes = htmlDocument.QuerySelectorAll("div[data-component-type=s-search-result]");
-            return htmlNodes.Select(node => new Product
+            var htmlNode = htmlNodes[0].QuerySelector(".s-image").Attributes["src"].Value;
+            IList<Product> products = new List<Product>();
+            foreach (HtmlNode node in htmlNodes)
             {
-                ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml,
-                Asin = node.Attributes["data-asin"].Value,
-                Price = Convert.ToDecimal(node.QuerySelector(".a-price-whole").InnerHtml),
-            });
+                var product = new Product();
+                product.ProductName = node.QuerySelector("a > span.a-text-normal").InnerHtml;
+                product.Asin = node.Attributes["data-asin"].Value;
+                product.Price = Convert.ToDecimal(node.QuerySelector(".a-price-whole")?.InnerHtml);
+                product.ImageUri = new Uri(node.QuerySelector(".s-image").Attributes["src"].Value);
+                products.Add(product);
+            }
+            return products;
         }
     }
 }

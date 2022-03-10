@@ -14,6 +14,7 @@ namespace AmazonScrapper.Lib.Tests
         {
             ProductSearch productSearch = new ProductSearch();
             _products = productSearch.GetProducts("Xbox one");
+            Console.WriteLine(_products.Count());
         }
 
         [Fact]
@@ -54,6 +55,12 @@ namespace AmazonScrapper.Lib.Tests
         {
             var asin = _products.First().Asin;
             Assert.Equal( new Uri($"https://www.amazon.in/dp/{asin}"), _products.First().ProductUrl);
+        }
+
+        [Fact]
+        public void Should_be_Able_to_Get_Image_Url()
+        {
+            Assert.NotNull(_products.First().ImageUri);
         }
     }
 }
