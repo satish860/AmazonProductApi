@@ -10,6 +10,8 @@ namespace AmazonScrapper.Lib
 {
     public class ProductSearch
     {
+        private const string SearchUrl = "https://www.amazon.in/s?k=";
+
         public HtmlDocument GetAmazonProduct(string url)
         {
             HtmlWeb document = new HtmlWeb();
@@ -18,7 +20,7 @@ namespace AmazonScrapper.Lib
 
         public string FormUrl(string searchTerm)
         {
-            return $"https://www.amazon.in/s?k={Uri.EscapeDataString(searchTerm)}&i=aps";
+            return $"{SearchUrl}{Uri.EscapeDataString(searchTerm)}&i=aps";
         }
 
         public IEnumerable<Product> GetProducts(string searchTerm)
