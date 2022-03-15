@@ -27,7 +27,6 @@ namespace AmazonScrapper.Lib
         {
             HtmlDocument htmlDocument = GetAmazonProduct(FormUrl(searchTerm));
             IList<HtmlNode> htmlNodes = htmlDocument.QuerySelectorAll("div[data-component-type=s-search-result]");
-            var htmlNode = htmlNodes[0].QuerySelector(".s-image").Attributes["src"].Value;
             IList<Product> products = new List<Product>();
             foreach (HtmlNode node in htmlNodes)
             {
