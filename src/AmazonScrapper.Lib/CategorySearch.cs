@@ -21,6 +21,8 @@ namespace AmazonScrapper.Lib
             {
                 Category category = new Category();
                 category.Name = node.InnerText;
+                category.item = node.Attributes["value"].Value.Replace("search-alias=","");
+                category.Index = category.item;
                 categories.Add(category);
             }
             return categories;

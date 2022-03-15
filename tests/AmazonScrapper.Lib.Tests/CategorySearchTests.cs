@@ -14,7 +14,8 @@ namespace AmazonScrapper.Lib.Tests
         {
             var category = new CategorySearch();
             var categories = category.GetCategories();
-            Assert.NotNull(categories);
+            Assert.Equal("All Categories", categories[0].Name);
+            Assert.Equal("aps", categories[0].item);
         }
     }
 }
